@@ -11,6 +11,7 @@ const client = new Client({
 
 
 const { Lunar } = require("lunar-javascript");
+const MESSAGE = "@everyone 🚀 Chào buổi sáng! Chúc mọi người một ngày tốt lành!";
 
 // Hàm kiểm tra ngày âm lịch
 function getLunarDay() {
@@ -28,6 +29,9 @@ async function checkAndNotify() {
 
     setInterval(async () => {
         const now = new Date();
+        if (now.getHours() === 9 && now.getMinutes() === 0) {
+            await channel.send(MESSAGE);
+        }
         const lunarDay = getLunarDay();
 
         // Nếu hôm nay là ngày 1 hoặc 15 âm lịch và chưa gửi tin nhắn hôm nay
